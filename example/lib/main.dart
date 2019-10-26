@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_pagewise/flutter_pagewise.dart';
 import 'package:http/http.dart' as http;
+import 'package:built_collection/built_collection.dart' show BuiltList;
 
 void main() => runApp(new MyApp());
 
@@ -239,7 +240,7 @@ class PagewiseSliverGridExample extends StatelessWidget {
 }
 
 class BackendService {
-  static Future<List<PostModel>> getPosts(offset, limit) async {
+  static Future<BuiltList<PostModel>> getPosts(offset, limit) async {
     final responseBody = (await http.get(
             'http://jsonplaceholder.typicode.com/posts?_start=$offset&_limit=$limit'))
         .body;
@@ -248,7 +249,7 @@ class BackendService {
     return PostModel.fromJsonList(json.decode(responseBody));
   }
 
-  static Future<List<ImageModel>> getImages(offset, limit) async {
+  static Future<BuiltList<ImageModel>> getImages(offset, limit) async {
     final responseBody = (await http.get(
             'http://jsonplaceholder.typicode.com/photos?_start=$offset&_limit=$limit'))
         .body;
@@ -267,8 +268,10 @@ class PostModel {
     this.body = obj['body'];
   }
 
-  static List<PostModel> fromJsonList(jsonList) {
-    return jsonList.map<PostModel>((obj) => PostModel.fromJson(obj)).toList();
+  static BuiltList<PostModel> fromJsonList(jsonList) {
+    List<PostModel> list =
+        jsonList.map<PostModel>((obj) => PostModel.fromJson(obj)).toList();
+    return BuiltList<PostModel>(list);
   }
 }
 
@@ -283,7 +286,9 @@ class ImageModel {
     this.thumbnailUrl = obj['thumbnailUrl'];
   }
 
-  static List<ImageModel> fromJsonList(jsonList) {
-    return jsonList.map<ImageModel>((obj) => ImageModel.fromJson(obj)).toList();
+  static BuiltList<ImageModel> fromJsonList(jsonList) {
+    List<ImageModel> list =
+        jsonList.map<ImageModel>((obj) => ImageModel.fromJson(obj)).toList();
+    return BuiltList<ImageModel>(list);
   }
 }

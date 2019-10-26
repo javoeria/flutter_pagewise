@@ -7,7 +7,8 @@ homepage: https://github.com/AbdulRahmanAlHamali/flutter_pagewise
 dependencies:
   flutter:
     sdk: flutter
-  async: ^2.0.8
+  async: ^2.3.0
+  built_collection: ^4.2.2
 environment:
   sdk: ">=2.1.0 <3.0.0"
 

@@ -2,9 +2,10 @@ library flutter_pagewise;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_pagewise/helpers/grid_helpers.dart';
+import 'package:built_collection/built_collection.dart' show BuiltList;
 
 typedef Widget ItemBuilder<T>(BuildContext context, T entry, int index);
-typedef Future<List<T>> PageFuture<T>(int pageIndex);
+typedef Future<BuiltList<T>> PageFuture<T>(int pageIndex);
 typedef Widget ErrorBuilder(BuildContext context, Object error);
 typedef Widget LoadingBuilder(BuildContext context);
 typedef Widget NoItemsFoundBuilder(BuildContext context);
@@ -461,7 +462,7 @@ class PagewiseLoadController<T> extends ChangeNotifier {
     if (!this._isFetching) {
       this._isFetching = true;
 
-      List<T> page;
+      BuiltList<T> page;
       try {
         page = await this.pageFuture(this._numberOfLoadedPages);
         this._numberOfLoadedPages++;
