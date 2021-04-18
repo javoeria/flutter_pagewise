@@ -1,3 +1,11 @@
+## 2.0.1 - 04-May-2021
+
+- PR#100 - Various tweaks to the null-safety code and Android fixes
+
+## 2.0.0 - 02/04/2021
+
+- Null Safety
+
 ## 1.2.3 - 27/03/2019
 
 - Handle a null Future return when loading a page. We assume a null Future is the same as an empty one.
