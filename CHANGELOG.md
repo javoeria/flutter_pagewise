@@ -1,3 +1,12 @@
+## 2.0.4 - 08-October-2022
+-- PR#115 Add null safety check to removeItem
+
+## 2.0.3 - 17-September-2022
+-- PR#64 Add possibility to remove items from loaded items list
+
+## 2.0.2 - 17-September-2022
+-- PR#109 - Use TextButton instead of FlatButton
+
 ## 2.0.1 - 04-May-2021
 
 - PR#100 - Various tweaks to the null-safety code and Android fixes

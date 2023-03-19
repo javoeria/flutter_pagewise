@@ -310,13 +310,15 @@ class PagewiseState<T> extends State<Pagewise<T>> {
   }
 
   Widget _getRetryWidget() {
-    var defaultRetryButton = FlatButton(
+    var defaultRetryButton = TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.grey[300],
+        shape: CircleBorder(),
+      ),
       child: Icon(
         Icons.refresh,
         color: Colors.white,
       ),
-      color: Colors.grey[300],
-      shape: CircleBorder(),
       onPressed: this._effectiveController!.retry,
     );
 
@@ -502,6 +504,11 @@ class PagewiseLoadController<T> extends ChangeNotifier {
   /// Attempts to retry in case an error occurred
   void retry() {
     this._error = null;
+    this.notifyListeners();
+  }
+
+  void removeItem(bool Function(T item) test) {
+    this._loadedItems?.removeWhere(test);
     this.notifyListeners();
   }
 }
